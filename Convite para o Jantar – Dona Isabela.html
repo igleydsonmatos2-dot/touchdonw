@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite para o Jantar – Dona Isabela</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@500;700&display=swap">
+<style>
+:root{--green:#203731;--turf:#2c5a44;--gold:#FFB612;--white:#f7f5ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0;-webkit-tap-highlight-color:transparent}
+body{background:#2c5a44;color:var(--white);font-family:"Barlow",Arial,sans-serif;overflow:hidden;
+ }
+main{position:relative;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:20px}
+main{z-index:1}
+.ticket{width:min(560px,100%);background:var(--white);color:var(--green);border-radius:14px;border:6px solid var(--gold);text-align:center;padding:28px 22px 32px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.badge{width:72px;height:72px;margin:0 auto 10px;border-radius:50%;background:var(--green);color:var(--gold);border:4px solid var(--gold);display:grid;place-items:center;font:44px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:1px}
+h1{font:clamp(40px,10vw,64px)/.95 "Bebas Neue",Impact,sans-serif;margin:0 0 12px;letter-spacing:1px}
+p{margin:0 auto 10px;max-width:42ch;font-size:18px;line-height:1.45}
+.info{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0 22px}
+.info span{background:var(--green);color:var(--gold);border-radius:8px;padding:8px 14px;font-weight:700;font-size:16px}
+.btns{display:flex;justify-content:center;gap:18px;min-height:64px}
+button{font:28px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:1px;border:0;border-radius:10px;padding:16px 34px;cursor:pointer;touch-action:manipulation}
+#yes{background:var(--gold);color:var(--green);box-shadow:0 5px 0 #b57f00}
+#yes:hover{transform:translateY(-2px)}
+#yes:active{transform:translateY(3px);box-shadow:0 2px 0 #b57f00}
+#no{background:var(--green);color:var(--white);box-shadow:0 5px 0 #0f1c18;transition:left .25s ease,top .25s ease}
+#no.run{position:fixed;z-index:10}
+button:focus-visible{outline:4px solid var(--turf);outline-offset:3px}
+#msg{min-height:24px;margin-top:16px;font-weight:700}
+#win{display:none}
+.won #ask{display:none}
+.won #win{display:block}
+.conf{position:fixed;top:-20px;width:10px;height:16px;z-index:20;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.field{position:fixed;inset:0;overflow:hidden;background:#2c5a44;pointer-events:none}
+.field>*{position:absolute}
+.st{left:calc(var(--p)*1%);width:calc(var(--w)*1%);top:0;bottom:0;background:rgba(0,0,0,.11)}
+.ez{top:0;bottom:0;width:calc(var(--w)*1%);background:var(--green);display:grid;place-items:center;color:var(--gold);font:clamp(30px,7vmin,72px)/1 "Bebas Neue",Impact,sans-serif;letter-spacing:.14em;writing-mode:vertical-rl}
+.ez.a{left:0;transform:rotate(180deg);border-right:4px solid #fff}
+.ez.b{right:0;border-left:4px solid #fff}
+.yl{left:calc(var(--p)*1%);top:0;bottom:0;width:2px;margin-left:-1px;background:rgba(255,255,255,.65)}
+.yl.m{width:4px;margin-left:-2px;background:rgba(255,255,255,.9)}
+.num{left:calc(var(--p)*1%);transform:translateX(-50%);color:rgba(255,255,255,.88);font:clamp(20px,4.5vmin,44px)/1 "Bebas Neue",Impact,sans-serif}
+.num.s1{top:8%}.num.s2{bottom:8%}
+.post{position:fixed;aspect-ratio:100/170;fill:none;stroke:var(--gold);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:0;top:50%;transform:translateY(-50%);height:min(52vh,380px);filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
+.post.a{left:.5vw}.post.b{right:.5vw}
+main{z-index:1}
+.fb{width:auto;height:auto;background:none!important;font-style:normal;line-height:1}
+@media (max-aspect-ratio:1/1){
+ .st{left:0;right:0;top:calc(var(--p)*1%);bottom:auto;width:auto;height:calc(var(--w)*1%)}
+ .ez{left:0;right:0;top:auto;bottom:auto;width:auto;height:calc(var(--w)*1%);writing-mode:horizontal-tb}
+ .ez.a{top:0;transform:none;border-right:0;border-bottom:4px solid #fff}
+ .ez.b{bottom:0;border-left:0;border-top:4px solid #fff}
+ .yl{left:0;right:0;top:calc(var(--p)*1%);bottom:auto;width:auto;height:2px;margin:-1px 0 0}
+ .yl.m{height:4px;margin:-2px 0 0}
+ .num.s1,.num.s2{top:calc(var(--p)*1%);bottom:auto}
+ .num.s1{left:4%;right:auto;transform:translateY(-50%) rotate(90deg)}
+ .num.s2{left:auto;right:4%;transform:translateY(-50%) rotate(-90deg)}
+ .post{top:auto;left:50%;height:min(15vh,130px);transform:translateX(-50%)}
+ .post.a{top:.5vh;right:auto}.post.b{bottom:.5vh;left:50%;right:auto}
+}
+@media (max-width:520px){
+ main{padding:14px}
+ .ticket{padding:22px 16px 26px;border-width:5px}
+ .badge{width:60px;height:60px;font-size:36px}
+ p{font-size:16px}
+ .info span{font-size:14px;padding:7px 11px}
+ .btns{gap:12px}
+ button{font-size:24px;padding:14px 26px}
+}
+@media (prefers-reduced-motion:reduce){#no{transition:none}.conf{display:none}}
+</style>
+</head>
+<body>
+<div class="field" id="field" aria-hidden="true"></div>
+<svg class="post a" viewBox="0 0 100 170" aria-hidden="true"><path d="M20 8V72H80V8M50 72V160M34 160H66"/></svg>
+<svg class="post b" viewBox="0 0 100 170" aria-hidden="true"><path d="M20 8V72H80V8M50 72V160M34 160H66"/></svg>
+<main>
+ <section class="ticket" id="card">
+  <div class="badge" aria-hidden="true">GB</div>
+  <div id="ask">
+   <h1>Dona Isabela, você foi convocada</h1>
+   <p>O time completo está escalado e falta só a titular.</p>
+   <div class="info">
+    <span id="data">Data: vamos ver</span>
+    <span id="hora">Hora: vamos ver</span>
+    <span id="local">Local: no osakis</span>
+   </div>
+   <p><strong>Você aceita o convite?</strong></p>
+   <div class="btns">
+    <button id="yes">Sim!</button>
+    <button id="no">Não</button>
+   </div>
+   <div id="msg" role="status"></div>
+  </div>
+  <div id="win">
+   <h1>Touchdown!</h1>
+   <p>Convite aceito, Dona Isabela.</p>
+  </div>
+ </section>
+</main>
+<script>
+
+const DETALHES = { data: "a vamos ver", hora: "vamos ver", local: "no osakis" };
+document.getElementById("data").textContent = "Data: " + DETALHES.data;
+document.getElementById("hora").textContent = "Hora: " + DETALHES.hora;
+document.getElementById("local").textContent = "Local: " + DETALHES.local;
+
+
+
+(function(){
+ const f=document.getElementById("field"), Y=100/120, EZ=10*Y;
+ const add=(cls,p,w,txt)=>{const d=document.createElement("div");d.className=cls;d.style.setProperty("--p",p);if(w)d.style.setProperty("--w",w);if(txt)d.textContent=txt;f.appendChild(d)};
+ for(let yd=0;yd<100;yd+=20) add("st",EZ+(yd+10)*Y,10*Y);
+ add("ez a",0,EZ,"PACKERS"); add("ez b",0,EZ,"GREEN BAY");
+ for(let yd=0;yd<=100;yd+=5) add("yl"+(yd%10===0?" m":""),EZ+yd*Y);
+ for(let yd=10;yd<=90;yd+=10){const n=yd<=50?yd:100-yd; add("num s1",EZ+yd*Y,0,n); add("num s2",EZ+yd*Y,0,n);}
+})();
+
+const no = document.getElementById("no"), yes = document.getElementById("yes"), msg = document.getElementById("msg");
+const frases = ["Jogada bloqueada", "Tackle na defesa!", "Fora de jogo, tente o Sim!", "Essa passou longe", "A defesa do Packers não deixa"];
+let tentativas = 0;
+
+function fugir(e){
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const r = no.getBoundingClientRect(), m = 12;
+  const w = r.width, h = r.height;
+  const y = yes.getBoundingClientRect();
+  if (!no.classList.contains("run")) {
+   
+    const ph = document.createElement("span");
+    ph.style.cssText = "display:inline-block;width:" + w + "px;height:" + h + "px";
+    no.parentNode.insertBefore(ph, no);
+    no.classList.add("run");
+  }
+  let x, yy, tries = 0;
+  do {
+    x = m + Math.random() * (window.innerWidth - w - 2*m);
+    yy = m + Math.random() * (window.innerHeight - h - 2*m);
+    tries++;
+  } while (tries < 30 && (Math.abs(x - r.left) < 120 && Math.abs(yy - r.top) < 120 ||
+           (x < y.right + 10 && x + w > y.left - 10 && yy < y.bottom + 10 && yy + h > y.top - 10)));
+  no.style.left = x + "px";
+  no.style.top = yy + "px";
+  tentativas++;
+  msg.textContent = frases[tentativas % frases.length];
+}
+["mouseenter","pointerdown","touchstart","touchmove","click","focus"].forEach(ev => no.addEventListener(ev, fugir, {passive:false}));
+window.addEventListener("resize", () => {
+  if (!no.classList.contains("run")) return;
+  const r = no.getBoundingClientRect(), m = 12;
+  no.style.left = Math.max(m, Math.min(r.left, window.innerWidth - r.width - m)) + "px";
+  no.style.top = Math.max(m, Math.min(r.top, window.innerHeight - r.height - m)) + "px";
+});
+no.addEventListener("keydown", fugir);
+
+yes.addEventListener("click", () => {
+  document.getElementById("card").classList.add("won");
+  document.body.classList.add("won");
+  no.style.display = "none";
+  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  const cores = ["#FFB612", "#f7f5ee", "#203731", "#2c5a44"];
+  for (let i = 0; i < 110; i++) {
+    const c = document.createElement("i");
+    const bola = i % 4 === 0;
+    c.className = "conf" + (bola ? " fb" : "");
+    if (bola) { c.textContent = "🏈"; c.style.fontSize = 24 + Math.random() * 20 + "px"; }
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = cores[i % cores.length];
+    c.style.animationDuration = 2 + Math.random() * 2.5 + "s";
+    c.style.animationDelay = Math.random() * .8 + "s";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 8000);
+  }
+});
+</script>
+</body>
+</html>
